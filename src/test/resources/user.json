@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "user":{
+       "userName": "Hien HOANG",
+       "email": "wholesale1@1secmail.org",
+       "password": "Wh0l3s4l3!@#"
+    }
+  },
+  {
+    "id": 2,
+    "user": {
+      "userName": "login1234@yopmail.com testcase@yopmmail.com1",
+      "email": "testcase@yopmmail.com",
+      "password": "testcase@yopmmail.com"
+    }
+  }
+]

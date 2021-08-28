@@ -1,0 +1,34 @@
+package com.peeba.test.e2etests.pages.home;
+
+import com.peeba.test.e2etests.annotations.Page;
+import com.peeba.test.e2etests.pages.BasePage;
+import com.peeba.test.e2etests.pages.product.ProductComponent;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Log4j2
+@Page
+public class HomePage extends BasePage {
+
+    @Autowired
+    private HeaderComponent headerComponent;
+
+    @Autowired
+    private ProductComponent productComponent;
+
+    public void goTo(String url){
+        log.info("Go to the link [%s]...", url);
+        this.driver.get(url);
+    }
+
+    public HeaderComponent getHeaderComponent(){
+        return headerComponent;
+    }
+
+    public ProductComponent getProductComponent() { return productComponent;}
+
+    @Override
+    public boolean isAt() {
+        return this.headerComponent.isAt();
+    }
+}

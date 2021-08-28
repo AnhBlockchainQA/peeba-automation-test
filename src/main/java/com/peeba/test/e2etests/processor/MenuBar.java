@@ -1,0 +1,17 @@
+package com.peeba.test.e2etests.processor;
+
+import lombok.Getter;
+
+import java.util.Random;
+
+public enum MenuBar {
+    BRAND("Brand"),
+    PRODUCT("Product");
+
+    @Getter
+    private String tabName;
+
+    MenuBar(String tabName){
+        this.tabName = tabName;
+    }
+}
