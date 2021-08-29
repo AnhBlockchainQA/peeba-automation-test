@@ -5,6 +5,7 @@ import com.peeba.test.e2etests.annotations.ThreadScopeBean;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -42,9 +43,9 @@ public class WebDriverConfig {
     public WebDriver chromeDriver() {
         WebDriverManager.chromedriver().setup();
 //        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--headless");
-//        WebDriver driver = new ChromeDriver(options);
+//        options.addArguments("--start-maximized");
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
         Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
         return driver;
     }

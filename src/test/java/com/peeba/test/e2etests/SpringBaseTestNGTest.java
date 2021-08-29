@@ -20,9 +20,9 @@ public class SpringBaseTestNGTest extends AbstractTestNGSpringContextTests {
     @Value("${application.url}")
     protected String url;
 
-    @BeforeMethod(alwaysRun = true)
-    public void createTestContext(ITestContext context) {
-        context.setAttribute("driver", this.context.getBean(WebDriver.class));
-    }
+//    @BeforeMethod(alwaysRun = true)
+//    public void createTestContext(ITestContext context) {
+//        context.setAttribute("driver", this.context.getBean(WebDriver.class));
+//    }
 
 }

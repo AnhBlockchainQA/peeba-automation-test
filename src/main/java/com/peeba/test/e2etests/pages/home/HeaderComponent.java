@@ -69,7 +69,7 @@ public class HeaderComponent extends BasePage {
      * @param userName
      */
     public void verifyLoginSuccessful(String userName) {
-        assertThat(this.username.getText()).isEqualTo(userName);
+        assertThat(this.username.getText().equals(userName)).isTrue();
     }
 
     public void clickOnUserAvatarIcon(){

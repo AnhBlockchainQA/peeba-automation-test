@@ -2,7 +2,7 @@ package com.peeba.test.e2etests.pages.home;
 
 import com.peeba.test.e2etests.annotations.Page;
 import com.peeba.test.e2etests.pages.BasePage;
-import com.peeba.test.e2etests.pages.product.ProductComponent;
+import com.peeba.test.e2etests.pages.product.SuggestBrandsComponent;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,8 +13,6 @@ public class HomePage extends BasePage {
     @Autowired
     private HeaderComponent headerComponent;
 
-    @Autowired
-    private ProductComponent productComponent;
 
     public void goTo(String url){
         log.info("Go to the link [%s]...", url);
@@ -24,8 +22,6 @@ public class HomePage extends BasePage {
     public HeaderComponent getHeaderComponent(){
         return headerComponent;
     }
-
-    public ProductComponent getProductComponent() { return productComponent;}
 
     @Override
     public boolean isAt() {
