@@ -13,17 +13,22 @@ This project is built for testing Peeba web application. It is built on top of :
    - Clone the repo
   
 2. Test run command line:
-   - We support several test command line for properly custom the test execution:
-   2.1. Run with Firefox driver:
+   - We support several test command line for properly custom the test execution.
+   
+2.1. Run with Firefox driver:
    - Use: mvn clean test -Dbrowser=firefox
    - Note: Chrome is run by default so no need to pass -Dbrowser=chrome
-   2.2. Run with specific test suite:
+
+2.2. Run with specific test suite:
    - User: mvn clean test -DsuiteXMLFile=/path/to/testng.xml
-   2.3. Run with different env:
+
+2.3. Run with different env:
    - To do so, please create the application-{env}.properties file inside resources folder, and define all the necessary properties like application.url, etc...
    - For running the test, user: mvn clean test -Dspring.profiles.active={env} with {env} is the name of env that we have binded application properties file.
-   2.4. Generate report:
+
+2.4. Generate report:
    - Use: mvn allure:report
-   2.5. Visualize the report:
+
+2.5. Visualize the report:
    - Use: mvn allure:serve
    
