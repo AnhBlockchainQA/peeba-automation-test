@@ -1,4 +1,4 @@
-package com.peeba.test.e2etests.processor;
+package com.peeba.test.e2etests.constants;
 
 import lombok.Getter;
 
@@ -11,7 +11,7 @@ public enum MenuBar {
     @Getter
     private String tabName;
 
-    MenuBar(String tabName){
+    MenuBar(String tabName) {
         this.tabName = tabName;
     }
 }

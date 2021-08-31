@@ -23,7 +23,7 @@ public class WindowSwitchService {
                 });
     }
 
-    public void switchByIndex(final int index){
+    public void switchByIndex(final int index) {
         WebDriver driver = this.ctx.getBean(WebDriver.class);
         String[] handles = driver.getWindowHandles().toArray(new String[driver.getWindowHandles().size()]);
         driver.switchTo().window(handles[index]);

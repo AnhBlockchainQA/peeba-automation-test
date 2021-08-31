@@ -1,9 +1,7 @@
-package com.peeba.test.e2etests.processor;
+package com.peeba.test.e2etests.constants;
 
 import lombok.Getter;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 public enum Category {
@@ -20,11 +18,11 @@ public enum Category {
     @Getter
     private String category;
 
-    Category(String category){
+    Category(String category) {
         this.category = category;
     }
 
-    public static Category randomCategory(){
+    public static Category randomCategory() {
         return Category.values()[new Random().nextInt(Category.values().length)];
     }
 

@@ -2,6 +2,6 @@ id: screen-diff
 name: Screen diff
 description: Who cares about description by just-boris
 jsFiles:
-  - index.js
+- index.js
 cssFiles:
-  - styles.css
+- styles.css

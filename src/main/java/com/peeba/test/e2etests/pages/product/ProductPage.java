@@ -19,19 +19,19 @@ public class ProductPage extends BasePage {
     @Autowired
     private ProductCheckoutComponent checkoutComponent;
 
-    public ProductBrandComponent getProductBrandComponent(){
+    public ProductBrandComponent getProductBrandComponent() {
         return productBrandComponent;
     }
 
-    public ProductDetailComponent getProductDetailComponent(){
+    public ProductDetailComponent getProductDetailComponent() {
         return productDetailComponent;
     }
 
-    public SuggestBrandsComponent getSuggestBrandsComponent(){
+    public SuggestBrandsComponent getSuggestBrandsComponent() {
         return this.suggestBrandsComponent;
     }
 
-    public ProductCheckoutComponent getCheckoutComponent(){
+    public ProductCheckoutComponent getCheckoutComponent() {
         return this.checkoutComponent;
     }
 

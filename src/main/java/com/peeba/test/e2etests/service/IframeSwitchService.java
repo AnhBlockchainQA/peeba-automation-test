@@ -17,14 +17,19 @@ public class IframeSwitchService {
         driver.switchTo().frame(index);
     }
 
-    public void switchToFrameWithName(final String name){
+    public void switchToFrameWithName(final String name) {
         WebDriver driver = this.ctx.getBean(WebDriver.class);
         driver.switchTo().frame(name);
     }
 
-    public void switchToFrameWithSelector(final WebElement element){
+    public void switchToFrameWithSelector(final WebElement element) {
         WebDriver driver = this.ctx.getBean(WebDriver.class);
         driver.switchTo().frame(element);
+    }
+
+    public void switchBackToOriginalIframe() {
+        WebDriver driver = this.ctx.getBean(WebDriver.class);
+        driver.switchTo().defaultContent();
     }
 
 }

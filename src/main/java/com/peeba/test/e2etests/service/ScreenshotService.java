@@ -28,8 +28,8 @@ public class ScreenshotService {
         FileCopyUtils.copy(sourceFile, this.path.resolve("screenshot_" + Calendar.getInstance() + ".png").toFile());
     }
 
-    public byte[] getScreenshot(){
+    public byte[] getScreenshot() {
         return ((TakesScreenshot) this.ctx.getBean(TakesScreenshot.class)).getScreenshotAs(OutputType.BYTES);
     }
-    
+
 }

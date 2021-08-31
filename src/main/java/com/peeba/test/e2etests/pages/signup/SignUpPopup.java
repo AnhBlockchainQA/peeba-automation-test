@@ -10,7 +10,7 @@ public class SignUpPopup extends BasePage {
     @Autowired
     private FirstScreen firstScreen;
 
-    public FirstScreen getFirstScreen(){
+    public FirstScreen getFirstScreen() {
         return this.firstScreen;
     }
 

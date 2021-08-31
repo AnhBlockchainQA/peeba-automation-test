@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
 import java.io.IOException;
 import java.util.Objects;
 
@@ -43,7 +44,7 @@ public class TC000_LoginTest extends SpringBaseTestNGTest {
     @Severity(SeverityLevel.NORMAL)
     @Step("User: Login to the app")
     @Description("Test case description: Login to the page with valid credentials")
-    public void login(){
+    public void login() {
         log.info("Login to the app...");
         this.homePage.getHeaderComponent().clickOnLoginLink();
         this.popup.login(userData.getEmail(), userData.getPassword());

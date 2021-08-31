@@ -5,7 +5,9 @@ import com.peeba.test.e2etests.pages.BasePage;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
@@ -27,7 +29,7 @@ public class HeaderComponent extends BasePage {
     @FindBy(css = "header > .MuiBox-root a")
     private List<WebElement> categories;
 
-    @FindBy(css="div[role=\"presentation\"] > div.MuiPopover-paper > div:nth-child(1) > div > p")
+    @FindBy(css = "div[role=\"presentation\"] > div.MuiPopover-paper > div:nth-child(1) > div > p")
     private WebElement username;
 
     @Override
@@ -54,10 +56,11 @@ public class HeaderComponent extends BasePage {
 
     /**
      * Click on the category with name
+     *
      * @param name
      */
     public void clickOnCategoryWithName(String name) {
-        categories.stream()
+        this.categories.stream()
                 .filter(el -> el.getText().equals(name))
                 .findFirst().orElseThrow(() -> {
             throw new RuntimeException("Category with name not found");
@@ -66,13 +69,17 @@ public class HeaderComponent extends BasePage {
 
     /**
      * Verify that we login successful
+     *
      * @param userName
      */
     public void verifyLoginSuccessful(String userName) {
-        assertThat(this.username.getText().equals(userName)).isTrue();
+        assertThat(this.username.getText()).isEqualTo(userName);
     }
 
-    public void clickOnUserAvatarIcon(){
+    /**
+     * Click on user avatar icon
+     */
+    public void clickOnUserAvatarIcon() {
         this.wait.until((d) -> this.userAvatarIcon.isDisplayed());
         this.userAvatarIcon.click();
     }

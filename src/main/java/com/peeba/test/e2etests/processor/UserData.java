@@ -18,15 +18,10 @@ public class UserData {
     @JsonProperty("user")
     User user;
 
-    static class User{
-        @JsonProperty("userName")
-        private String userName;
-
-        @JsonProperty("email")
-        private String email;
-
-        @JsonProperty("password")
-        private String password;
+    public static List<UserData> get(String fileName) throws JsonParseException, JsonMappingException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(new File(fileName), new TypeReference<List<UserData>>() {
+        });
     }
 
     public Long getId() {
@@ -37,20 +32,26 @@ public class UserData {
         this.id = id;
     }
 
-    public String getUserName(){
+    public String getUserName() {
         return user.userName;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return user.email;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return user.password;
     }
 
-    public static List<UserData> get(String fileName) throws JsonParseException, JsonMappingException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(fileName), new TypeReference<List<UserData>>(){});
+    static class User {
+        @JsonProperty("userName")
+        private String userName;
+
+        @JsonProperty("email")
+        private String email;
+
+        @JsonProperty("password")
+        private String password;
     }
 }

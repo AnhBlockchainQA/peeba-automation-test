@@ -13,13 +13,17 @@ public class HomePage extends BasePage {
     @Autowired
     private HeaderComponent headerComponent;
 
-
-    public void goTo(String url){
-        log.info("Go to the link [%s]...", url);
+    /**
+     * Go to url
+     *
+     * @param url
+     */
+    public void goTo(String url) {
+        log.info("Go to the link {url}...", url);
         this.driver.get(url);
     }
 
-    public HeaderComponent getHeaderComponent(){
+    public HeaderComponent getHeaderComponent() {
         return headerComponent;
     }
 

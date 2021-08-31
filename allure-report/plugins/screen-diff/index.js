@@ -1,5 +1,5 @@
 (function () {
-    var settings = allure.getPluginSettings('screen-diff', { diffType: 'diff' });
+    var settings = allure.getPluginSettings('screen-diff', {diffType: 'diff'});
 
     function renderImage(src) {
         return (
@@ -192,7 +192,7 @@
             this.render();
         },
     });
-    allure.api.addTestResultBlock(TestResultView, { position: 'before' });
+    allure.api.addTestResultBlock(TestResultView, {position: 'before'});
     allure.api.addAttachmentViewer('application/vnd.allure.image.diff', {
         View: AttachmentView,
         icon: 'fa fa-exchange',
