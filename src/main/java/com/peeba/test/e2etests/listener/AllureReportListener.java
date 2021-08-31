@@ -5,6 +5,7 @@ import com.peeba.test.e2etests.service.ScreenshotService;
 import io.qameta.allure.Allure;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
+
 import java.io.ByteArrayInputStream;
 import java.time.Instant;
 
@@ -14,6 +15,6 @@ public class AllureReportListener extends TestListenerAdapter {
     public synchronized void onTestFailure(ITestResult iTestResult) {
         ScreenshotService screenshotService = BeanUtil.getBean(ScreenshotService.class);
         Allure.attachment(iTestResult.getTestContext().getName() + "_" + Instant.now(),
-                    new ByteArrayInputStream(screenshotService.getScreenshot()));
+                new ByteArrayInputStream(screenshotService.getScreenshot()));
     }
 }

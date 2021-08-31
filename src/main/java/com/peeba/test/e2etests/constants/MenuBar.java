@@ -11,7 +11,7 @@ public enum MenuBar {
     @Getter
     private String tabName;
 
-    MenuBar(String tabName){
+    MenuBar(String tabName) {
         this.tabName = tabName;
     }
 }

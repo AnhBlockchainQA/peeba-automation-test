@@ -2,4 +2,4 @@ id: trx
 name: XUnit TRX Plugin
 description: The plugin that adds support for results TRX data format.
 extensions:
-  - io.qameta.allure.trx.TrxPlugin
+- io.qameta.allure.trx.TrxPlugin

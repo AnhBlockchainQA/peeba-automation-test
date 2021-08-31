@@ -18,12 +18,12 @@ public class WindowAspect {
     @Before("@target(window) && within(com.peeba.test.e2etests..*)")
     //Take class which has annotation called Window and this class is presented in this
     // before execution of each method, run this
-    public void before(Window window){
+    public void before(Window window) {
         this.switchService.switchByTitle(window.value());
     }
 
     //This will be execute after each method execution
-    public void after(Window window){
+    public void after(Window window) {
         this.switchService.switchByIndex(0);
     }
 

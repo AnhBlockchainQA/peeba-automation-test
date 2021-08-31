@@ -15,14 +15,15 @@ public class HomePage extends BasePage {
 
     /**
      * Go to url
+     *
      * @param url
      */
-    public void goTo(String url){
+    public void goTo(String url) {
         log.info("Go to the link {url}...", url);
         this.driver.get(url);
     }
 
-    public HeaderComponent getHeaderComponent(){
+    public HeaderComponent getHeaderComponent() {
         return headerComponent;
     }
 

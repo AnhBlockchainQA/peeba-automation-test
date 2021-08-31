@@ -30,16 +30,16 @@ public class CheckoutPaymentComponent extends BasePage {
     @FindBy(xpath = "//span[text()='Card information']/following-sibling::div//iframe[contains(@name,\"__privateStripeFrame\")]")
     private WebElement cardInfoFrame;
 
-    @FindBy(name="cardnumber")
+    @FindBy(name = "cardnumber")
     private WebElement cardNumberInput;
 
-    @FindBy(name="exp-date")
+    @FindBy(name = "exp-date")
     private WebElement expiryDateInput;
 
-    @FindBy(name="cvc")
+    @FindBy(name = "cvc")
     private WebElement cvcInput;
 
-    @FindBy(name="postal")
+    @FindBy(name = "postal")
     private WebElement zipCodeInput;
 
     @Override
@@ -47,38 +47,38 @@ public class CheckoutPaymentComponent extends BasePage {
         return this.wait.until((d) -> this.cardHolderInput.isDisplayed());
     }
 
-    private void inputCardholderName(String name){
+    private void inputCardholderName(String name) {
         log.info("Input {} into cardholder name...", name);
         this.wait.until((d) -> this.cardHolderInput.isDisplayed());
         this.cardHolderInput.sendKeys(name);
     }
 
-    private void switchToCardInfoFrame(){
+    private void switchToCardInfoFrame() {
         log.info("Switch to frame...");
         iframeSwitchService.switchToFrameWithSelector(cardInfoFrame);
     }
 
-    private void inputCardNumber(String number){
+    private void inputCardNumber(String number) {
         log.info("Input {} into card number field...", number);
         this.cardNumberInput.sendKeys(number);
     }
 
-    private void inputExpiryDate(String date){
+    private void inputExpiryDate(String date) {
         log.info("Input {} into expiry date field...", date);
         this.expiryDateInput.sendKeys(date);
     }
 
-    private void inputCvc(String number){
+    private void inputCvc(String number) {
         log.info("Input {} into CVC field...", number);
         this.cvcInput.sendKeys(number);
     }
 
-    private void inputZipCode(String code){
+    private void inputZipCode(String code) {
         log.info("Input {} into zip code field...", code);
         this.zipCodeInput.sendKeys(code);
     }
 
-    private void clickOnAddPaymentMethodLink(){
+    private void clickOnAddPaymentMethodLink() {
         log.info("Click on Add payment link...");
         this.wait.until((d) -> this.addPaymentMethodLink.isDisplayed());
         this.addPaymentMethodLink.click();
@@ -93,7 +93,7 @@ public class CheckoutPaymentComponent extends BasePage {
         switchToCardInfoFrame();
         inputCardNumber(StripeCardNumber.randomCardNumber().getCardNumber());
         inputExpiryDate(faker.regexify(RegexConstants.EXPIRY_DATE_REGEX.getRegEx()));
-        inputCvc(String.valueOf(faker.random().nextInt(100,999)));
+        inputCvc(String.valueOf(faker.random().nextInt(100, 999)));
         inputZipCode(faker.regexify(RegexConstants.ZIP_CODE_REGEX.getRegEx()));
     }
 }

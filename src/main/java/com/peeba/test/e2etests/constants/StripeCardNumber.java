@@ -16,11 +16,11 @@ public enum StripeCardNumber {
     @Getter
     private String cardNumber;
 
-    StripeCardNumber(String cardNumber){
+    StripeCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
-    public static StripeCardNumber randomCardNumber(){
+    public static StripeCardNumber randomCardNumber() {
         return StripeCardNumber.values()[new Random().nextInt(StripeCardNumber.values().length)];
     }
 }

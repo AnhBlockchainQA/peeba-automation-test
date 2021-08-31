@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -21,6 +22,12 @@ public class ProductData {
 
     @JsonProperty("color")
     String color;
+
+    public static List<ProductData> get(String fileName) throws JsonParseException, JsonMappingException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(new File(fileName), new TypeReference<List<ProductData>>() {
+        });
+    }
 
     public Long getId() {
         return id;
@@ -52,10 +59,5 @@ public class ProductData {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public static List<ProductData> get(String fileName) throws JsonParseException, JsonMappingException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(fileName), new TypeReference<List<ProductData>>(){});
     }
 }

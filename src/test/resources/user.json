@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "user":{
-       "userName": "Hien HOANG",
-       "email": "wholesale1@1secmail.org",
-       "password": "Wh0l3s4l3!@#"
+    "user": {
+      "userName": "Hien HOANG",
+      "email": "wholesale1@1secmail.org",
+      "password": "Wh0l3s4l3!@#"
     }
   },
   {

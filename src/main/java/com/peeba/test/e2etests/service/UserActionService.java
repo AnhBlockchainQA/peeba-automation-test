@@ -17,18 +17,18 @@ public class UserActionService {
     @Autowired
     private ApplicationContext ctx;
 
-    public void scrollToElement(WebElement element){
+    public void scrollToElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) this.ctx.getBean(WebDriver.class);
         js.executeScript("arguments[0].scrollIntoView(true);", element);
         Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
     }
 
-    public void mouseOverElement(WebElement target){
+    public void mouseOverElement(WebElement target) {
         Actions actions = new Actions(this.ctx.getBean(WebDriver.class));
         actions.moveToElement(target).build();
     }
 
-    public void clickOnElement(WebElement target){
+    public void clickOnElement(WebElement target) {
         Actions actions = new Actions(this.ctx.getBean(WebDriver.class));
         actions.moveToElement(target).click().build().perform();
     }

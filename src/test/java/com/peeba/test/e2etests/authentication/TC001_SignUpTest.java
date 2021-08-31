@@ -24,14 +24,14 @@ public class TC001_SignUpTest extends SpringBaseTestNGTest {
     private SignUpPopup signUpPopup;
 
     @BeforeClass
-    public void setUp(){
+    public void setUp() {
         this.homePage.goTo(url);
         this.homePage.isAt();
     }
 
     @Test
-    public void signUp(){
+    public void signUp() {
         this.homePage.getHeaderComponent().clickOnSignUpButton();
-        this.signUpPopup.getFirstScreen().signUp(faker.bothify("??????##@1secmail.com"));
+        this.signUpPopup.getFirstScreen().signUp();
     }
 }

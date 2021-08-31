@@ -19,15 +19,15 @@ public class CheckoutPage extends BasePage {
     @Autowired
     private CheckoutConfirmationComponent checkoutConfirmationComponent;
 
-    public CheckoutShippingAddressComponent getShippingAddressComponent(){
+    public CheckoutShippingAddressComponent getShippingAddressComponent() {
         return this.shippingAddressComponent;
     }
 
-    public CheckoutPaymentComponent getPaymentComponent(){
+    public CheckoutPaymentComponent getPaymentComponent() {
         return this.paymentComponent;
     }
 
-    public CheckoutProcessComponent getConfirmationComponent(){
+    public CheckoutProcessComponent getConfirmationComponent() {
         return this.checkoutProcessComponent;
     }
 

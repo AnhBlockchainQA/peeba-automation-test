@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Log4j2
 public class CheckoutConfirmationComponent extends BasePage {
 
-    @FindBy(css="img[src*='placeOrderTick.svg']")
+    @FindBy(css = "img[src*='placeOrderTick.svg']")
     private WebElement orderConfirmationTick;
 
     @FindBy(tagName = "h5")
@@ -25,7 +25,7 @@ public class CheckoutConfirmationComponent extends BasePage {
     /**
      * This method verifies if confirmation message is present
      */
-    public void verifyConfirmationMessagePresent(){
+    public void verifyConfirmationMessagePresent() {
         log.info("Waiting and check if confirmation message is shown...");
         Uninterruptibles.sleepUninterruptibly(10, TimeUnit.SECONDS);
         assertThat(this.message.getText()).isEqualTo(ApplicationMessage.ORDER_CONFIRMATION_MESSAGE.getMessage());

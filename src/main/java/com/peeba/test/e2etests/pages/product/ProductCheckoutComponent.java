@@ -13,7 +13,7 @@ public class ProductCheckoutComponent extends BasePage {
     @FindBy(xpath = "//button[descendant::text()='Checkout']")
     private WebElement checkoutButton;
 
-    public void clickOnCheckoutButton(){
+    public void clickOnCheckoutButton() {
         log.info("Click on Checkout button");
         this.checkoutButton.click();
     }

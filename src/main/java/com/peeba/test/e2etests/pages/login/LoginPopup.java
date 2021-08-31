@@ -19,24 +19,25 @@ public class LoginPopup extends BasePage {
     @FindBy(xpath = "//div[contains(@class, 'MuiDialog-container')]//input[@type='password']")
     private WebElement password;
 
-    private void clickOnLoginButton(){
+    private void clickOnLoginButton() {
         this.loginButton.click();
     }
 
-    private void inputEmail(String email){
+    private void inputEmail(String email) {
         this.emailAddress.sendKeys(email);
     }
 
-    private void inputPassword(String password){
+    private void inputPassword(String password) {
         this.password.sendKeys(password);
     }
 
     /**
      * This method aims to login to the app
+     *
      * @param email
      * @param password
      */
-    public void login(String email, String password){
+    public void login(String email, String password) {
         log.info("Login with {}/{}", email, password);
         inputEmail(email);
         inputPassword(password);

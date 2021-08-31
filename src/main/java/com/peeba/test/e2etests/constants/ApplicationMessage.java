@@ -8,7 +8,7 @@ public enum ApplicationMessage {
     @Getter
     private String message;
 
-    ApplicationMessage(String message){
+    ApplicationMessage(String message) {
         this.message = message;
     }
 }
