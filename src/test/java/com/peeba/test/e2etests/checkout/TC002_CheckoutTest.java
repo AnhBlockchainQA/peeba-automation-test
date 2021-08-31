@@ -1,6 +1,7 @@
 package com.peeba.test.e2etests.checkout;
 
 import com.peeba.test.e2etests.SpringBaseTestNGTest;
+import com.peeba.test.e2etests.pages.checkout.CheckoutPage;
 import com.peeba.test.e2etests.pages.home.HomePage;
 import com.peeba.test.e2etests.pages.login.LoginPopup;
 import com.peeba.test.e2etests.pages.product.ProductPage;
@@ -31,6 +32,13 @@ public class TC002_CheckoutTest extends SpringBaseTestNGTest {
     @Autowired
     private ProductPage productPage;
 
+    @Autowired
+    private CheckoutPage checkoutPage;
+
+    String productName;
+
+    float threshold;
+
     @BeforeClass
     @Parameters({"user-registration-data-file"})
     public void setUp(String userDataFile) throws IOException {
@@ -45,51 +53,73 @@ public class TC002_CheckoutTest extends SpringBaseTestNGTest {
     @Step("User: Login to the app")
     @Description("Test case description: Login to the page with valid credentials")
     public void login(){
-        log.info("Login to the app...");
+        log.info("Step 1 : Login to the app...");
         this.homePage.getHeaderComponent().clickOnLoginLink();
         this.popup.login(userData.getEmail(), userData.getPassword());
         this.productPage.getSuggestBrandsComponent().isAt();
     }
 
-    @Test(priority = 1, description = "Verify that we can go to branch by clicking on brand name", dependsOnMethods = {"login"})
+    @Test(priority = 1, description = "Verify that we can go to branch by clicking on brand name")
     @Severity(SeverityLevel.NORMAL)
     @Step("User: Click on brand appeared in suggested brands")
     @Description("Test case description: Click on the branch and verify we can see brand products")
     public void clickOnSuggestedBrandWithName(){
+         log.info("Step 2: Click on the brand name in Suggest Brands list");
          this.productPage.getSuggestBrandsComponent().clickOnSuggestBrandWithName("exampleG");
          this.productPage.getProductBrandComponent().isAt();
+         this.productPage.getProductBrandComponent().verifyBrandNameDisplayedCorrectly("exampleG");
+         threshold = this.productPage.getProductBrandComponent().getThresholdOfBrand();
     }
 
 
-    @Test(priority = 2, description = "Verify that we can go to product detail to add product to cart", dependsOnMethods = {"clickOnSuggestedBrandWithName"})
+    @Test(priority = 2, description = "Verify that we can go to product detail to add product to cart")
     @Severity(SeverityLevel.NORMAL)
     @Step("User: Click on any product")
     @Description("Test case description: Click on the product to go to product detail page")
     public void clickOnRandomProduct(){
-        this.productPage.getProductBrandComponent().clickOnRandomProduct();
+        log.info("Step 3: Click on any product of brand");
+        this.productPage.getProductBrandComponent().clickOnRandomProductOfBrand();
         this.productPage.getProductDetailComponent().isAt();
     }
-//
-//    @Test(priority = 3, description = "Verify that we can select quantity for product to checkout", dependsOnMethods = {"clickOnRandomProduct"})
-//    @Severity(SeverityLevel.NORMAL)
-//    @Step("User: Select the quantity then click on Add to Cart button")
-//    @Description("Test case description: User selects the quantity then click on Add to Cart button")
-//    public void clickOnCheckoutButton(){
-//        this.productPage.getProductDetailComponent().clickOnQuantityDropList();
-//        this.productPage.getProductDetailComponent().clickOnRandomQuantityOption();
-//        this.productPage.getProductDetailComponent().clickOnAddToCartButton();
-//        this.productPage.getCheckoutComponent().isAt();
-//    }
-//
-//    @Test(priority = 4, description = "Verify that we can place the order", dependsOnMethods = {"clickOnCheckoutButton"})
-//    @Severity(SeverityLevel.NORMAL)
-//    @Step("User: Fullfil Checkout product")
-//    @Description("Test case description: Click on the product to go to product detail page")
-//    public void checkoutProduct(){
-//        this.productPage.getProductDetailComponent().clickOnQuantityDropList();
-//        this.productPage.getProductDetailComponent().clickOnRandomQuantityOption();
-//        this.productPage.getProductDetailComponent().clickOnAddToCartButton();
-//        this.productPage.getCheckoutComponent().isAt();
-//    }
+
+    @Test(priority = 3, description = "Verify that we can select quantity for product to checkout")
+    @Severity(SeverityLevel.NORMAL)
+    @Step("User: Select the quantity then click on Add to Cart button")
+    @Description("Test case description: User selects the quantity then click on Add to Cart button")
+    public void addProductToCart(){
+        log.info("Step 4: Click on checkout button");
+        this.productPage.getProductDetailComponent().selectQuantityOptionForProduct(threshold);
+        this.productPage.getProductDetailComponent().clickOnAddToCartButton();
+        this.productPage.getCheckoutComponent().isAt();
+    }
+
+    @Test(priority = 4, description = "Verify that we can checkout", dependsOnMethods = {"addProductToCart"})
+    @Severity(SeverityLevel.NORMAL)
+    @Step("User: Click on Checkout")
+    @Description("Test case description: Click on Checkout")
+    public void checkoutCart(){
+        this.productPage.getCheckoutComponent().clickOnCheckoutButton();
+        this.checkoutPage.isAt();
+    }
+
+    @Test(priority = 5, description = "Verify that we can place the order", dependsOnMethods = {"checkoutCart"})
+    @Severity(SeverityLevel.NORMAL)
+    @Step("User: Fullfil shipping form then choose card for placing order")
+    @Description("Test case description: Fill form then click on Place order")
+    public void placeOrder(){
+        // Note: This user already had an address and payment option
+        this.checkoutPage.getShippingAddressComponent().fullfilShippingInformationForm();
+        this.checkoutPage.getPaymentComponent().fullfilCardInformationForm();
+        this.checkoutPage.getConfirmationComponent().clickOnPlaceOrder();
+    }
+
+    @Test(priority = 6, description = "Verify that we can see the confirmation message after placing order the order", dependsOnMethods = {"placeOrder"})
+    @Severity(SeverityLevel.NORMAL)
+    @Step("User: Check that we can see confirmation message")
+    @Description("Test case description: Click on Checkout")
+    public void checkConfirmationMessage(){
+        this.checkoutPage.getCheckoutConfirmationComponent().isAt();
+        this.checkoutPage.getCheckoutConfirmationComponent().verifyConfirmationMessagePresent();
+    }
 
 }

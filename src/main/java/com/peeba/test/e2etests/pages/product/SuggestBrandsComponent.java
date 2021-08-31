@@ -1,5 +1,6 @@
 package com.peeba.test.e2etests.pages.product;
 
+import com.google.common.util.concurrent.Uninterruptibles;
 import com.peeba.test.e2etests.annotations.LazyAutowired;
 import com.peeba.test.e2etests.annotations.PageFragment;
 import com.peeba.test.e2etests.pages.BasePage;
@@ -23,7 +24,7 @@ public class SuggestBrandsComponent extends BasePage {
     private UserActionService userActionService;
 
 
-    @FindBy(xpath = "//h6[descendant::text()='Our picks for you']/../../following-sibling::div/div")
+    @FindBy(xpath = "//h6[descendant::text()='Our picks for you']/../../following-sibling::div/div/a")
     private List<WebElement> suggestedBrands;
 
     private void waitUntilSuggestListLoaded(){
@@ -32,11 +33,15 @@ public class SuggestBrandsComponent extends BasePage {
     }
 
     private WebElement filterBrandByName(String name){
-        return suggestedBrands.stream()
-                .map(element -> element.findElement(By.tagName("a")))
+        return this.suggestedBrands.stream()
                 .filter(el -> el.getAttribute("href").contains(name.toLowerCase()))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Can not find brand with this name"));
+    }
+
+    private void clickOnBrandName(WebElement brand){
+        Uninterruptibles.sleepUninterruptibly(4, TimeUnit.SECONDS);
+        brand.click();
     }
     /**
      *
@@ -45,8 +50,7 @@ public class SuggestBrandsComponent extends BasePage {
     public void clickOnSuggestBrandWithName(String name){
         waitUntilSuggestListLoaded();
         WebElement brand = filterBrandByName(name);
-        userActionService.scrollToElement(brand);
-        brand.click();
+        clickOnBrandName(brand);
     }
 
     @Override

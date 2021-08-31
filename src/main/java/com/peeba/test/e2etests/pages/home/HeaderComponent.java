@@ -57,7 +57,7 @@ public class HeaderComponent extends BasePage {
      * @param name
      */
     public void clickOnCategoryWithName(String name) {
-        categories.stream()
+        this.categories.stream()
                 .filter(el -> el.getText().equals(name))
                 .findFirst().orElseThrow(() -> {
             throw new RuntimeException("Category with name not found");
@@ -69,9 +69,12 @@ public class HeaderComponent extends BasePage {
      * @param userName
      */
     public void verifyLoginSuccessful(String userName) {
-        assertThat(this.username.getText().equals(userName)).isTrue();
+        assertThat(this.username.getText()).isEqualTo(userName);
     }
 
+    /**
+     * Click on user avatar icon
+     */
     public void clickOnUserAvatarIcon(){
         this.wait.until((d) -> this.userAvatarIcon.isDisplayed());
         this.userAvatarIcon.click();

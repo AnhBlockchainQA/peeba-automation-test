@@ -27,4 +27,9 @@ public class IframeSwitchService {
         driver.switchTo().frame(element);
     }
 
+    public void switchBackToOriginalIframe(){
+        WebDriver driver = this.ctx.getBean(WebDriver.class);
+        driver.switchTo().defaultContent();
+    }
+
 }

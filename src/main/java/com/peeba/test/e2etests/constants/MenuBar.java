@@ -1,4 +1,4 @@
-package com.peeba.test.e2etests.processor;
+package com.peeba.test.e2etests.constants;
 
 import lombok.Getter;
 

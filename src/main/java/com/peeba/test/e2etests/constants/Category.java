@@ -1,9 +1,7 @@
-package com.peeba.test.e2etests.processor;
+package com.peeba.test.e2etests.constants;
 
 import lombok.Getter;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 public enum Category {
